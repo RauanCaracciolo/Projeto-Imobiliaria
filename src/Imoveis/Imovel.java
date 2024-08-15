@@ -19,56 +19,72 @@ public abstract class Imovel {
         this.validado = false;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public boolean isValidado() {
+        return validado;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public String getDescricao() {
+        return descricao;
     }
 
     public double getArea() {
         return area;
     }
 
-    public void setArea(double area) {
-        this.area = area;
-    }
-
     public int getAndares() {
         return andares;
-    }
-
-    public void setAndares(int andares) {
-        this.andares = andares;
     }
 
     public double getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
-        this.valor = valor;
-    }
-
     public String getVendedor() {
         return vendedor;
-    }
-
-    public void setVendedor(String vendedor) {
-        this.vendedor = vendedor;
     }
 
     public TiposImoveis getTipo() {
         return tipo;
     }
 
-    public void setTipo(TiposImoveis tipo) {
-        this.tipo = tipo;
+    public void setDescricao(String descricao) {
+        if(descricao != "" || descricao != null){
+            this.descricao = descricao;
+        } else{
+            throw new RuntimeException("A descricao precisa ser valida");
+        }
     }
 
-    public boolean isValidado() {
-        return validado;
+    public void setArea(double area) {
+        if(area > 0.0){
+            this.area = area;
+        } else{
+            throw new RuntimeException("A area precisa ser maior que 0");
+        }
+    }
+
+    public void setAndares(int andares) {
+        if(andares > 0){
+            this.andares = andares;
+        } else{
+            throw new RuntimeException("Os andares precisam ser maior que 0");
+        }
+    }
+
+    public void setValor(double valor) {
+        if(valor > 0.0){
+            this.valor = valor;
+        } else{
+            throw new RuntimeException("O valor do imovel precisam ser maior que 0");
+        }
+    }
+
+    public void setVendedor(String vendedor) {
+        this.vendedor = vendedor;
+    }
+
+    public void setTipo(TiposImoveis tipo) {
+        this.tipo = tipo;
     }
 
     public void setValidado() {
