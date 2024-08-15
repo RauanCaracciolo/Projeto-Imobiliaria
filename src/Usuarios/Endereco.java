@@ -4,10 +4,10 @@ public class Endereco {
     private String rua;
     private String bairro;
     private String cidade;
-    private String CEP;
+    private long CEP;
     private int numero;
 
-    public Endereco(String rua, String bairro, String cidade, String CEP, int numero){
+    public Endereco(String rua, String bairro, String cidade, long CEP, int numero){
         setRua(rua);
         setBairro(bairro);
         setCidade(cidade);
@@ -18,39 +18,59 @@ public class Endereco {
         return rua;
     }
 
-    public void setRua(String rua) {
-        this.rua = rua;
-    }
-
     public String getBairro() {
         return bairro;
-    }
-
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
     }
 
     public String getCidade() {
         return cidade;
     }
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
-    public String getCEP() {
+    public long getCEP() {
         return CEP;
-    }
-
-    public void setCEP(String CEP) {
-        this.CEP = CEP;
     }
 
     public int getNumero() {
         return numero;
     }
 
+    public void setRua(String rua) {
+        if(rua != "" || rua != null){
+            this.rua = rua;
+        }else{
+            throw new RuntimeException("A rua precisa ser uma rua valida");
+        }
+    }
+
+    public void setBairro(String bairro) {
+        if(bairro != "" || bairro != null){
+            this.bairro = bairro;
+        }else{
+            throw new RuntimeException("O bairro precisa ser um bairro valido");
+        }
+    }
+
+    public void setCidade(String cidade) {
+        if(cidade != "" || cidade != null){
+            this.cidade = cidade;
+        }else{
+            throw new RuntimeException("A cidade precisa ser uma cidade valido");
+        }
+    }
+
+    public void setCEP(long CEP) {
+        if(CEP > 0){
+            this.CEP = CEP;
+        } else{
+            throw new RuntimeException("O CEP precisa ser um numero valido");
+        }
+    }
+
     public void setNumero(int numero) {
-        this.numero = numero;
+        if(numero > 0){
+            this.numero = numero;
+        } else{
+            throw new RuntimeException("O Numero da casa precisa ser maior que 0 e precisa ser um numero real");
+        }
     }
 }

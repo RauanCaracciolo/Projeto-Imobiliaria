@@ -15,7 +15,11 @@ public class Consultor extends Usuario{
     }
 
     public void setSalario(double salario) {
-        this.salario = salario;
+        if(salario > 0.0){
+            this.salario = salario;
+        } else{
+            throw new RuntimeException("O salario precisa ser maio que 0");
+        }
     }
     public void cadastraImovel(){}
     public void validaImovel(Imovel i){

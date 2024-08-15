@@ -19,36 +19,53 @@ public abstract class Usuario {
         return login;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
     public String getNome() {
         return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public String getSenha() {
         return senha;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public Endereco getEndereco() {
         return endereco;
+    }
+
+    public void setLogin(String login) {
+        if(login != "" || login != null){
+            this.login = login;
+        } else{
+            throw new RuntimeException("O login precisa ser um login valido");
+        }
+    }
+
+    public void setNome(String nome) {
+        if(nome != "" || nome != null){
+            this.nome = nome;
+        } else{
+            throw new RuntimeException("O nome precisa ser um nome existente");
+        }
+    }
+
+    public void setSenha(String senha) {
+        if(senha != "" || senha != null){
+            this.senha = senha;
+        } else{
+            throw new RuntimeException("A senha precisa ser valida");
+        }
+    }
+
+    public void setEmail(String email) {
+        //Fazer regex
+        if(email != "" || email != null){
+            this.email = email;
+        } else{
+            throw new RuntimeException("O email precisa ser um email valido");
+        }
     }
 
     public void setEndereco(Endereco endereco) {
