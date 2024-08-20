@@ -2,6 +2,7 @@ package repositories;
 
 import java.util.HashMap;
 import java.util.Map;
+import models.Cliente;
 import models.Pagamento;
 
 
@@ -21,16 +22,26 @@ public class PagamentoRepository {
          }
          
          public Pagamento buscarPorId(long id) {
-                  if(pagamentos.containsKey(id)) {
-                           return pagamentos.get(id);
-                  }
-                  return null;
+                  return pagamentos.get(id);
          }
          
          public Map<Long, Pagamento> buscarTodos() {
-                  if(!pagamentos.isEmpty()) {
-                           return pagamentos;
+                  return pagamentos;
+         }
+         
+         public Map<Long, Pagamento> buscarPagamentosCliente(Cliente cliente) {
+                  Map<Long, Pagamento> pagamentosCliente = new HashMap<>();
+                  
+                  for(Pagamento p : pagamentos.values()) {
+                           if(p.getCliente().equals(cliente)) {
+                                    pagamentosCliente.put(p.getId(), p);
+                           }
                   }
-                  return null;
+                  
+                  return pagamentosCliente;
+         }
+         
+         public boolean contem(long id) {
+                  return pagamentos.containsKey(id);
          }
 }
