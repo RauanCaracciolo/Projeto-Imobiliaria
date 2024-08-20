@@ -1,9 +1,10 @@
 package exceptions;
 
-public class InvalidApartamentoException extends Exception {
 
-    public InvalidApartamentoException(String message, Throwable err) {
-        super(message, err);
+public class InvalidApartamentoException extends RuntimeException {
+
+    public InvalidApartamentoException(String message) {
+        super(message);
     }
-
+         
 }
