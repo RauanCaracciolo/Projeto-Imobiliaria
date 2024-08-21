@@ -38,7 +38,7 @@ public class PagamentoController {
          }
 
          public void fazerPagamento() {
-                  Cliente cliente = new Cliente(); //CLIENTE TEMPORARIO ANTES DA CRIACAO DAS CLASSES CLIENTE
+                  Cliente cliente = new Cliente("", "", "", ""); //CLIENTE TEMPORARIO ANTES DA CRIACAO DAS CLASSES CLIENTE
 
                   System.out.print("Digite o valor do pagamento: ");
                   double valor = scanner.nextDouble();
