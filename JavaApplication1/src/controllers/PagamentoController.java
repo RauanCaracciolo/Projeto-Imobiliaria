@@ -47,6 +47,7 @@ public class PagamentoController {
                   int formaPagamento = 0;
                   while (formaPagamento < 1 && formaPagamento > 3) {
                            System.out.println("Selecione a forma de pagamento: \n1-Cartao\n2-Dinheiro\n3-Pix");
+                           formaPagamento = scanner.nextInt();
                            switch (formaPagamento) {
                                     case 1 -> tipoPagamento = TipoPagamento.CARTAO;
                                     case 2 -> tipoPagamento = TipoPagamento.DINHEIRO;
