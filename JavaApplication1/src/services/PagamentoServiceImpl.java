@@ -4,7 +4,7 @@ import exceptions.PagamentoDuplicadoException;
 import java.util.Map;
 import models.Cliente;
 import models.Pagamento;
-import repositories.ClienteRepository;
+import repositories.UsuarioRepository;
 import repositories.PagamentoRepository;
 //VERIFICAR SE O CLIENTE EXISTE APOS CRIAR CLIENTEREPOSITORY
 //VERIFICAR SE O CLIENTE EXISTE APOS CRIAR CLIENTEREPOSITORY
@@ -12,9 +12,9 @@ import repositories.PagamentoRepository;
 public class PagamentoServiceImpl implements PagamentoService {
 
          private PagamentoRepository pagamentoRepository;
-         private ClienteRepository clienteRepository;
+         private UsuarioRepository clienteRepository;
 
-         public PagamentoServiceImpl(PagamentoRepository pagamentoRepository, ClienteRepository ClienteRepository) {
+         public PagamentoServiceImpl(PagamentoRepository pagamentoRepository, UsuarioRepository ClienteRepository) {
                   this.pagamentoRepository = pagamentoRepository;
                   this.clienteRepository = ClienteRepository;
          }
@@ -58,7 +58,7 @@ public class PagamentoServiceImpl implements PagamentoService {
 
          @Override
          public void excluirPagamento(long id) {
-                  if (pagamentoRepository.contem(id)) {
+                  if (!pagamentoRepository.contem(id)) {
                            throw new IllegalArgumentException("Nao existe nenhum pagamento com o id: " + id);
                   }
                   pagamentoRepository.excluir(id);

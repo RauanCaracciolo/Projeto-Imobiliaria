@@ -1,18 +1,24 @@
 package main;
 
-import enums.TipoImovel;
-import enums.TipoPagamento;
-import factories.ImovelFactory;
 import factories.UsuarioFactory;
-import models.Cliente;
-import models.Imovel;
-import models.Pagamento;
 import models.Usuario;
-import repositories.PagamentoRepository;
+import repositories.UsuarioRepository;
+import updaters.UsuarioUpdater;
 
 
 public class Teste {
          public static void main(String[] args) {
+                  /*
+                  PagamentoRepository pr = new PagamentoRepository();
+                  PagamentoService ps = new PagamentoServiceImpl(pr, new UsuarioRepository());
+                  PagamentoController pc = new PagamentoController(ps);
+                  
+                  boolean a = true;
+                  while(a) {
+                           pc.menu();
+                           a = false;
+                  }
+                  
                   Cliente cliente = new Cliente("", "", "", "");
                   
                   Pagamento p1 = new Pagamento(cliente, 10.0, TipoPagamento.CARTAO);
@@ -21,7 +27,7 @@ public class Teste {
                   
                   //System.out.println(p1);
                   
-                  PagamentoRepository pr = new PagamentoRepository();
+                  
                   
                   pr.salvar(p1);
                   pr.salvar(p2);
@@ -46,5 +52,27 @@ public class Teste {
                   
                   System.out.println(imovel1);
                   System.out.println(imovel2);
+                  */
+                  
+                  Usuario user1 = UsuarioFactory.criarUsuario("Matheus", "matharuso", "123", "matheus@gmail.com", true);
+                  Usuario user2 = UsuarioFactory.criarUsuario("Pablo", "pablito1", "123", "pablito@gmail.com", false);
+                  Usuario user3 = UsuarioFactory.criarUsuario("Marcelo", "pablito2", "123", "pablito@gmail.com", false);
+                  Usuario user4 = UsuarioFactory.criarUsuario("Hugo", "pablito3", "123", "pablito@gmail.com", false);
+                  Usuario user5 = UsuarioFactory.criarUsuario("Thiago", "pablito4", "123", "pablito@gmail.com", false);
+                  
+                  UsuarioRepository ur = new UsuarioRepository();
+                  ur.salvar(user1);
+                  ur.salvar(user2);
+                  ur.salvar(user3);
+                  ur.salvar(user4);
+                  ur.salvar(user5);
+                  
+                  
+                  System.out.println(ur.buscarTodos());
+                  
+                  UsuarioUpdater usuarioUpdater = new UsuarioUpdater(ur, user5);
+                  usuarioUpdater.mudarNome("afonso");
+                  
+                  System.out.println(ur.buscarTodos());
          }
 }

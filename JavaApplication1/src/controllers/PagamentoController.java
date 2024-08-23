@@ -19,21 +19,29 @@ public class PagamentoController {
          }
 
          public void menu() {
-                  System.out.println("----- Menu de Pagamentos -----");
-                  System.out.println("1. Fazer um pagamento");
-                  System.out.println("2. Buscar um pagamento");
-                  System.out.println("3. Excluir um pagamento");
-                  System.out.println("4. Sair");
-                  System.out.print("Digite a opção desejada: ");
+                  int opcao = 0;
+                  while (opcao != 4) {
+                           System.out.println("----- Menu de Pagamentos -----");
+                           System.out.println("1. Fazer um pagamento");
+                           System.out.println("2. Buscar um pagamento");
+                           System.out.println("3. Excluir um pagamento");
+                           System.out.println("4. Sair");
+                           System.out.print("Digite a opção desejada: ");
+                           
+                           opcao = scanner.nextInt();
 
-                  int opcao = scanner.nextInt();
-
-                  switch (opcao) {
-                           case 1 -> fazerPagamento();
-                           case 2 -> buscarPagamento();
-                           case 3 -> excluirPagamento();
-                           case 4 -> System.out.println("Saindo...");
-                           default -> System.out.println("Opção inválida!");
+                           switch (opcao) {
+                                    case 1 ->
+                                             fazerPagamento();
+                                    case 2 ->
+                                             buscarPagamento();
+                                    case 3 ->
+                                             excluirPagamento();
+                                    case 4 ->
+                                             System.out.println("Saindo...");
+                                    default ->
+                                             System.out.println("Opção inválida!");
+                           }
                   }
          }
 
@@ -43,16 +51,20 @@ public class PagamentoController {
                   System.out.print("Digite o valor do pagamento: ");
                   double valor = scanner.nextDouble();
 
-                  TipoPagamento tipoPagamento = null;
+                  TipoPagamento tipoPagamento = TipoPagamento.CARTAO;
                   int formaPagamento = 0;
-                  while (formaPagamento < 1 && formaPagamento > 3) {
+                  while (formaPagamento < 1 || formaPagamento > 3) {
                            System.out.println("Selecione a forma de pagamento: \n1-Cartao\n2-Dinheiro\n3-Pix");
                            formaPagamento = scanner.nextInt();
                            switch (formaPagamento) {
-                                    case 1 -> tipoPagamento = TipoPagamento.CARTAO;
-                                    case 2 -> tipoPagamento = TipoPagamento.DINHEIRO;
-                                    case 3 -> tipoPagamento = TipoPagamento.PIX;
-                                    default -> System.out.println("Valor invalido.");
+                                    case 1 ->
+                                             tipoPagamento = TipoPagamento.CARTAO;
+                                    case 2 ->
+                                             tipoPagamento = TipoPagamento.DINHEIRO;
+                                    case 3 ->
+                                             tipoPagamento = TipoPagamento.PIX;
+                                    default ->
+                                             System.out.println("Valor invalido.");
                            }
                   }
 

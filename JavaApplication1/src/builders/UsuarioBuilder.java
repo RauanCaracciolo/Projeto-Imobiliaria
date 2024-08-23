@@ -10,6 +10,15 @@ public class UsuarioBuilder {
          private String senha;
          private String email;
 
+         public UsuarioBuilder() { }
+         
+         public UsuarioBuilder(Usuario usuario) { //construtor utilizado para atualizar atributos
+                  setNome(usuario.getNome());
+                  setLogin(usuario.getLogin());
+                  setSenha(usuario.getSenha());
+                  setEmail(usuario.getEmail());
+         }
+
          public UsuarioBuilder setNome(String nome) {
                   this.nome = nome;
                   return this;
@@ -30,7 +39,7 @@ public class UsuarioBuilder {
                   return this;
          }
          
-         public Usuario build(boolean adm) {
-                  return adm ? new Consultor(nome, login, senha, email) : new Cliente(nome, login, senha, email);
+         public Usuario build(boolean consultor) {
+                  return consultor ? new Consultor(nome, login, senha, email) : new Cliente(nome, login, senha, email);
          }
 }

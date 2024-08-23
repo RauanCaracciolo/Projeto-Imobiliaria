@@ -6,4 +6,5 @@ public interface Usuario {
          public String getSenha();
          public String getLogin();
          public String getEmail();
+         public boolean getConsultor();
 }
