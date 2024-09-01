@@ -3,47 +3,44 @@ package updaters;
 import builders.UsuarioBuilder;
 import models.Usuario;
 import repositories.UsuarioRepository;
-//vai ser usado pelo service
+
 public class UsuarioUpdater {
-         UsuarioBuilder builder;
-         UsuarioRepository repository;
-         Usuario usuario;
 
-         public UsuarioUpdater(UsuarioRepository repository, Usuario usuario) {
-                  builder = new UsuarioBuilder(usuario);
+         private UsuarioRepository repository;
+
+         public UsuarioUpdater(UsuarioRepository repository) {
                   this.repository = repository;
-                  this.usuario = usuario;
          }
 
-         public void mudarNome(String novoNome) {
+         public void mudarNome(Usuario usuario, String novoNome) {
+                  UsuarioBuilder builder = new UsuarioBuilder(usuario);
                   Usuario usuarioAtualizado = builder.setNome(novoNome)
-                                                                        .build(usuario.getConsultor());
+                          .build(usuario.getConsultor());
                   
-                  repository.excluir(usuario.getLogin());
-                  repository.salvar(usuarioAtualizado);
+                  repository.atualizar(usuario, usuarioAtualizado);
          }
 
-         public void mudarLogin(String novoLogin) {
-                  Usuario usuarioAtualizado = builder.setNome(novoLogin)
-                                                                        .build(usuario.getConsultor());
-                  
-                  repository.excluir(usuario.getLogin());
-                  repository.salvar(usuarioAtualizado);
+         public void mudarLogin(Usuario usuario, String novoLogin) {
+                  UsuarioBuilder builder = new UsuarioBuilder(usuario);
+                  Usuario usuarioAtualizado = builder.setLogin(novoLogin)
+                          .build(usuario.getConsultor());
+
+                  repository.atualizar(usuario, usuarioAtualizado);
          }
 
-         public void mudarSenha(String novaSenha) {
-                  Usuario usuarioAtualizado = builder.setNome(novaSenha)
-                                                                        .build(usuario.getConsultor());
-                  
-                  repository.excluir(usuario.getLogin());
-                  repository.salvar(usuarioAtualizado);
+         public void mudarSenha(Usuario usuario, String novaSenha) {
+                  UsuarioBuilder builder = new UsuarioBuilder(usuario);
+                  Usuario usuarioAtualizado = builder.setSenha(novaSenha)
+                          .build(usuario.getConsultor());
+
+                  repository.atualizar(usuario, usuarioAtualizado);
          }
 
-         public void mudarEmail(String novoEmail) {
-                  Usuario usuarioAtualizado = builder.setNome(novoEmail)
-                                                                        .build(usuario.getConsultor());
-                  
-                  repository.excluir(usuario.getLogin());
-                  repository.salvar(usuarioAtualizado);
+         public void mudarEmail(Usuario usuario, String novoEmail) {
+                  UsuarioBuilder builder = new UsuarioBuilder(usuario);
+                  Usuario usuarioAtualizado = builder.setEmail(novoEmail)
+                          .build(usuario.getConsultor());
+
+                  repository.atualizar(usuario, usuarioAtualizado);
          }
 }

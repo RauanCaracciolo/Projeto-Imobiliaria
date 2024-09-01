@@ -3,6 +3,7 @@ package main;
 import factories.UsuarioFactory;
 import models.Usuario;
 import repositories.UsuarioRepository;
+import services.ClienteServiceImpl;
 import updaters.UsuarioUpdater;
 
 
@@ -60,19 +61,28 @@ public class Teste {
                   Usuario user4 = UsuarioFactory.criarUsuario("Hugo", "pablito3", "123", "pablito@gmail.com", false);
                   Usuario user5 = UsuarioFactory.criarUsuario("Thiago", "pablito4", "123", "pablito@gmail.com", false);
                   
-                  UsuarioRepository ur = new UsuarioRepository();
-                  ur.salvar(user1);
-                  ur.salvar(user2);
-                  ur.salvar(user3);
-                  ur.salvar(user4);
-                  ur.salvar(user5);
+                  UsuarioRepository usuarioRepository = new UsuarioRepository();
+                  
+                  UsuarioUpdater usuarioUpdater = new UsuarioUpdater(usuarioRepository);
+                  
+                  ClienteServiceImpl clienteService = new ClienteServiceImpl(usuarioRepository);
+                  
+                  usuarioRepository.salvar(user1);
+                  usuarioRepository.salvar(user2);
+                  usuarioRepository.salvar(user3);
+                  usuarioRepository.salvar(user4);
+                  usuarioRepository.salvar(user5);
                   
                   
-                  System.out.println(ur.buscarTodos());
+                  System.out.println(usuarioRepository.buscarTodos());
                   
-                  UsuarioUpdater usuarioUpdater = new UsuarioUpdater(ur, user5);
-                  usuarioUpdater.mudarNome("afonso");
+                  usuarioUpdater.mudarNome(user1, "Afonso");
                   
-                  System.out.println(ur.buscarTodos());
+                  System.out.println(usuarioRepository.buscarTodos());
+                  
+                  clienteService.excluirCliente(user2.getLogin(), user2.getSenha());
+                  //usuarioRepository.excluir(user1.getLogin());
+                  
+                  System.out.println(usuarioRepository.buscarTodos());
          }
 }
