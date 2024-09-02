@@ -43,6 +43,7 @@ public class PagamentoController {
                                              System.out.println("Opção inválida!");
                            }
                   }
+                  scanner.close();
          }
 
          public void fazerPagamento() {

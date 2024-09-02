@@ -1,9 +1,11 @@
 package main;
 
 import factories.UsuarioFactory;
+import models.Cliente;
 import models.Usuario;
 import repositories.UsuarioRepository;
 import services.ClienteServiceImpl;
+import services.ConsultorServiceImpl;
 import updaters.UsuarioUpdater;
 
 
@@ -60,21 +62,26 @@ public class Teste {
                   Usuario user3 = UsuarioFactory.criarUsuario("Marcelo", "pablito2", "123", "pablito@gmail.com", false);
                   Usuario user4 = UsuarioFactory.criarUsuario("Hugo", "pablito3", "123", "pablito@gmail.com", false);
                   Usuario user5 = UsuarioFactory.criarUsuario("Thiago", "pablito4", "123", "pablito@gmail.com", false);
+                  Usuario user6 = UsuarioFactory.criarUsuario("Jonas", "junin", "123", "juninjonas@gmail.com", true);
                   
                   UsuarioRepository usuarioRepository = new UsuarioRepository();
                   
                   UsuarioUpdater usuarioUpdater = new UsuarioUpdater(usuarioRepository);
                   
                   ClienteServiceImpl clienteService = new ClienteServiceImpl(usuarioRepository);
+                  ConsultorServiceImpl consultorService = new ConsultorServiceImpl(usuarioRepository);
                   
                   usuarioRepository.salvar(user1);
                   usuarioRepository.salvar(user2);
-                  usuarioRepository.salvar(user3);
+                  //usuarioRepository.salvar(user3);
                   usuarioRepository.salvar(user4);
                   usuarioRepository.salvar(user5);
+                  usuarioRepository.salvar(user6);
+                  
+                  clienteService.salvarCliente((Cliente) user3);
                   
                   
-                  System.out.println(usuarioRepository.buscarTodos());
+                  //System.out.println(usuarioRepository.buscarTodos());
                   
                   usuarioUpdater.mudarNome(user1, "Afonso");
                   
@@ -82,7 +89,12 @@ public class Teste {
                   
                   clienteService.excluirCliente(user2.getLogin(), user2.getSenha());
                   //usuarioRepository.excluir(user1.getLogin());
+
+                  //System.out.println(usuarioRepository.buscarTodosClientes());
+                  //System.out.println(usuarioRepository.buscarTodosConsultores());
                   
                   System.out.println(usuarioRepository.buscarTodos());
+                  System.out.println(consultorService.buscarTodosConsultores());
+                  
          }
 }

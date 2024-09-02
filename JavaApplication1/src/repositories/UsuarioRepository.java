@@ -33,8 +33,9 @@ public class UsuarioRepository {
 
          public Usuario buscarPorLogin(String login) {
                   Usuario usuario = usuarios.get(login);
-                  if (usuario instanceof Cliente) {
-                           return (Cliente) usuario;
+                  
+                  if (usuario instanceof Cliente cliente) {
+                           return cliente;
                   } else if (usuario instanceof Consultor consultor) {
                            return consultor;
                   }
@@ -43,31 +44,21 @@ public class UsuarioRepository {
          }
 
          public List<Usuario> buscarTodos() {
-                  List<Usuario> resultado = new ArrayList<>();
-                  for (Usuario u : usuarios.values()) {
-                           resultado.add(u);
-                  }
-                  return resultado;
+                  return usuarios.values().stream().toList();
          }
-
+         
          public List<Consultor> buscarTodosConsultores() {
-                  List<Consultor> resultado = new ArrayList<>();
-                  for (Usuario u : usuarios.values()) {
-                           if (u instanceof Consultor) {
-                                    resultado.add((Consultor) u);
-                           }
-                  }
-                  return resultado;
+                  return usuarios.values().stream()
+                          .filter(usuario -> usuario instanceof Consultor)
+                          .map(usuario -> (Consultor) usuario)
+                          .toList();
          }
 
          public List<Cliente> buscarTodosClientes() {
-                  List<Cliente> resultado = new ArrayList<>();
-                  for (Usuario u : usuarios.values()) {
-                           if (u instanceof Cliente) {
-                                    resultado.add((Cliente) u);
-                           }
-                  }
-                  return resultado;
+                  return usuarios.values().stream()
+                          .filter(usuario -> usuario instanceof Cliente)
+                          .map(usuario -> (Cliente) usuario)
+                          .toList();
          }
 
          public boolean contem(String login) {

@@ -23,46 +23,42 @@ public class ClienteServiceImpl implements ClienteService {
 
          @Override
          public List<Cliente> buscarTodosClientes() {
-                  List<Cliente> resultado = new ArrayList<>();
-
-                  for (Usuario u : repository.buscarTodos()) {
-                           if (!u.getConsultor()) {
-                                    resultado.add((Cliente) u);
-                           }
-                  }
-
-                  return resultado;
+                  return repository.buscarTodosClientes();
          }
 
          @Override
          public Cliente buscarClientePorLogin(String login) {
-                  Cliente cliente;
-
                   if (login != null) {
-                           cliente = (Cliente) repository.buscarPorLogin(login);
-                           return cliente;
+                           if (repository.contem(login)) {
+                                    if (repository.buscarPorLogin(login) instanceof Cliente cliente) {
+                                             return cliente;
+                                    }
+                           }
                   }
-
-                  throw new LoginInvalidoException("Login invalido");
+                  throw new LoginInvalidoException("Login de cliente invalido.");
          }
 
          @Override
          public void salvarCliente(Cliente cliente) {
                   if (cliente != null) {
-                           repository.salvar(cliente);
+                           if (!repository.contem(cliente.getLogin())) {
+                                    repository.salvar(cliente);
+                           }
                   }
          }
 
          @Override
          public void excluirCliente(String login, String senha) {
-                  Usuario usuario = repository.buscarPorLogin(login);
+                  if (repository.contem(login)) {
+                           Usuario usuario = repository.buscarPorLogin(login);
 
-                  if (usuario instanceof Cliente cliente) {
-                           if (cliente.getSenha().equals(senha)) {
-                                    repository.excluir(login);
+                           if (usuario instanceof Cliente cliente) {
+                                    if (cliente.getSenha().equals(senha)) {
+                                             repository.excluir(login);
+                                    }
+                           } else {
+                                    throw new LoginInvalidoException("Usuário não é um cliente.");
                            }
-                  } else {
-                           throw new LoginInvalidoException("Usuário não é um cliente");
-                  }
+                  } throw new LoginInvalidoException("Usuário não existe.");
          }
 }
