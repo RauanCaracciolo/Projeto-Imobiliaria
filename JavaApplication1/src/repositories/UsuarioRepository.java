@@ -31,17 +31,15 @@ public class UsuarioRepository {
                   salvar(usuarioAtualizado);
          }
 
-         public Cliente buscarClientePorLogin(String login) {
+         public Usuario buscarPorLogin(String login) {
                   Usuario usuario = usuarios.get(login);
                   if (usuario instanceof Cliente) {
                            return (Cliente) usuario;
+                  } else if (usuario instanceof Consultor consultor) {
+                           return consultor;
                   }
                   
                   throw new LoginInvalidoException("Login invalido");
-         }
-
-         public Consultor buscarConsultorPorLogin(String login) {
-                  return (Consultor) usuarios.get(login);
          }
 
          public List<Usuario> buscarTodos() {

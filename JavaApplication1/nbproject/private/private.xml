@@ -2,6 +2,18 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/F:/Alexandre/Documents/3semestre/poo/projeto%20final/Projeto-Imobiliaria-teste/JavaApplication1/src/exceptions/LoginInvalidoException.java</file>
+            <file>file:/F:/Alexandre/Documents/3semestre/poo/projeto%20final/Projeto-Imobiliaria-teste/JavaApplication1/src/models/Usuario.java</file>
+            <file>file:/F:/Alexandre/Documents/3semestre/poo/projeto%20final/Projeto-Imobiliaria-teste/JavaApplication1/src/models/Consultor.java</file>
+            <file>file:/F:/Alexandre/Documents/3semestre/poo/projeto%20final/Projeto-Imobiliaria-teste/JavaApplication1/src/repositories/UsuarioRepository.java</file>
+            <file>file:/F:/Alexandre/Documents/3semestre/poo/projeto%20final/Projeto-Imobiliaria-teste/JavaApplication1/src/services/ClienteService.java</file>
+            <file>file:/F:/Alexandre/Documents/3semestre/poo/projeto%20final/Projeto-Imobiliaria-teste/JavaApplication1/src/models/Cliente.java</file>
+            <file>file:/F:/Alexandre/Documents/3semestre/poo/projeto%20final/Projeto-Imobiliaria-teste/JavaApplication1/src/updaters/UsuarioUpdater.java</file>
+            <file>file:/F:/Alexandre/Documents/3semestre/poo/projeto%20final/Projeto-Imobiliaria-teste/JavaApplication1/src/factories/UsuarioFactory.java</file>
+            <file>file:/F:/Alexandre/Documents/3semestre/poo/projeto%20final/Projeto-Imobiliaria-teste/JavaApplication1/src/services/ClienteServiceImpl.java</file>
+            <file>file:/F:/Alexandre/Documents/3semestre/poo/projeto%20final/Projeto-Imobiliaria-teste/JavaApplication1/src/main/Teste.java</file>
+            <file>file:/F:/Alexandre/Documents/3semestre/poo/projeto%20final/Projeto-Imobiliaria-teste/JavaApplication1/src/builders/UsuarioBuilder.java</file>
+        </group>
     </open-files>
 </project-private>

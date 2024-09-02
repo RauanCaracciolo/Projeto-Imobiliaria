@@ -39,7 +39,7 @@ public class ClienteServiceImpl implements ClienteService {
                   Cliente cliente;
 
                   if (login != null) {
-                           cliente = (Cliente) repository.buscarClientePorLogin(login);
+                           cliente = (Cliente) repository.buscarPorLogin(login);
                            return cliente;
                   }
 
@@ -55,10 +55,9 @@ public class ClienteServiceImpl implements ClienteService {
 
          @Override
          public void excluirCliente(String login, String senha) {
-                  Usuario usuario = repository.buscarClientePorLogin(login);
+                  Usuario usuario = repository.buscarPorLogin(login);
 
-                  if (usuario instanceof Cliente) {
-                           Cliente cliente = (Cliente) usuario;
+                  if (usuario instanceof Cliente cliente) {
                            if (cliente.getSenha().equals(senha)) {
                                     repository.excluir(login);
                            }
