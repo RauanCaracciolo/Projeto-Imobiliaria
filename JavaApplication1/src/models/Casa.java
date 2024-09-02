@@ -1,6 +1,8 @@
 package models;
 
 import enums.TipoImovel;
+import exceptions.InvalidInputException;
+
 import java.text.NumberFormat;
 
 public class Casa implements Imovel {
@@ -12,11 +14,11 @@ public class Casa implements Imovel {
          private Usuario proprietario;
 
          public Casa(String titulo, String descricao, double preco, TipoImovel tipoImovel, Usuario proprietario) {
-                  this.titulo = titulo;
-                  this.descricao = descricao;
-                  this.preco = preco;
-                  this.tipoImovel = tipoImovel;
-                  this.proprietario = proprietario;
+                  setTitulo(titulo);
+                  setDescricao(descricao);
+                  setPreco(preco);
+                  setTipoImovel(tipoImovel);
+                  setProprietario(proprietario);
          }
          
 
@@ -25,27 +27,72 @@ public class Casa implements Imovel {
                   return titulo;
          }
 
-         @Override
+    @Override
+    public void setTitulo(String titulo) {
+        if(titulo != null){
+            this.titulo = titulo;
+        }else{
+            throw new InvalidInputException("Titulo nulo!");
+        }
+    }
+
+    @Override
          public String getDescricao() {
                   return descricao;
          }
 
-         @Override
+    @Override
+    public void setDescricao(String descricao) {
+        if(descricao != null){
+            this.descricao = descricao;
+        }else{
+            throw new InvalidInputException("Descrição nula!");
+        }
+    }
+
+    @Override
          public double getPreco() {
                   return preco;
          }
 
-         @Override
+    @Override
+    public void setPreco(double preco) {
+        if(preco > 0.0){
+            this.preco = preco;
+        }else{
+            throw new InvalidInputException("Preço negativo!");
+        }
+    }
+
+    @Override
          public TipoImovel getTipoImovel() {
                   return tipoImovel;
          }
 
-         @Override
+    @Override
+    public void setTipoImovel(TipoImovel tipoImovel) {
+        if(tipoImovel != null){
+            this.tipoImovel = tipoImovel;
+        }else{
+            throw new InvalidInputException("Tipo de imovel invalido!");
+        }
+    }
+
+    @Override
          public Usuario getProprietario() {
                   return proprietario;
          }
-         
-         @Override
+
+    @Override
+    public void setProprietario(Usuario usuario) {
+             if(usuario != null){
+                 this.proprietario = usuario;
+             }else{
+                 throw new InvalidInputException("Proprietario nulo!");
+             }
+    }
+
+    @Override
          public String toString() {
                   NumberFormat formater = NumberFormat.getNumberInstance();
                   String valorFormatado = formater.format(preco);
