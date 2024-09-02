@@ -15,6 +15,14 @@ public class ImovelBuilder {
          private Usuario proprietario;
 
          public ImovelBuilder() { }
+         
+         public ImovelBuilder(Imovel imovel) { //construtor utilizado para atualizar atributos
+                  setTitulo(imovel.getTitulo());
+                  setDescricao(imovel.getDescricao());
+                  setPreco(imovel.getPreco());
+                  setProprietario(imovel.getProprietario());
+                  setTipoImovel(imovel.getTipoImovel());
+         }
 
          public ImovelBuilder setTitulo(String titulo) {
                   this.titulo = titulo;
