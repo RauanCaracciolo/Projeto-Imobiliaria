@@ -1,9 +1,7 @@
 package services;
 
 import exceptions.LoginInvalidoException;
-import java.util.ArrayList;
 import java.util.List;
-import models.Cliente;
 import models.Consultor;
 import models.Usuario;
 import repositories.UsuarioRepository;
