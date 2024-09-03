@@ -14,4 +14,7 @@ public interface Imovel {
          public void setTipoImovel(TipoImovel tipoImovel);
          public Usuario getProprietario();
          public void setProprietario(Usuario usuario);
+
+
+         //Precisa informar se o Imovel esta disponivel ou não, depois implementar no decorator
 }

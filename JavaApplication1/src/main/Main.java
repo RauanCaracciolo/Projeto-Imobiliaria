@@ -30,7 +30,7 @@ public class Main {
             String senhaADM = "ABCT";
 
             System.out.println("======================================");
-            System.out.println("======= IMOBILIARIO LAR IDEIAL =======");
+            System.out.println("======= IMOBILIARIA LAR IDEIAL =======");
             System.out.println("======================================");
 
             System.out.println("1-Logar como adm\n2-Logar como cliente");
@@ -59,7 +59,7 @@ public class Main {
                                 String titulo;
                                 String descricao;
                                 double preco;
-                                Usuario proprietario = null;
+
                                 Consultor consultor = new Consultor("Luiz", "login", "senha", "email");
 
                                 System.out.println("=================================");
@@ -80,17 +80,7 @@ public class Main {
                                     System.out.println("Informe o Preço da casa: ");
                                     preco = scannerCasa.nextDouble();
 
-                                    System.out.println("Informe o Proprietario da casa: ");
-                                    System.out.print("Nome ==> ");
-                                    proprietario.setNome(scannerCasa.nextLine());
-                                    System.out.print("EMAIL ==> ");
-                                    proprietario.setEmail(scannerCasa.nextLine());
-                                    System.out.print("Login ==> ");
-                                    proprietario.setLogin(scannerCasa.nextLine());
-                                    System.out.print("Senha ==> ");
-                                    proprietario.setSenha(scannerCasa.nextLine());
-
-                                    Casa casa = new Casa(titulo, descricao, preco, TipoImovel.CASA, proprietario);
+                                    Casa casa = new Casa(titulo, descricao, preco, TipoImovel.CASA, consultor);
                                     imovel.salvar(casa);
 
                                 } else if (opc == 2){
@@ -104,13 +94,10 @@ public class Main {
                                     System.out.println("Informe o Preço da Apartamento: ");
                                     preco = scannerCasa.nextDouble();
 
-                                    System.out.println("Informe o Proprietario da Apartamento: ");
-                                    //proprietario = scannerCasa.nextLine();
-                                    Apartamento apartamento = new Apartamento(titulo, descricao, preco, TipoImovel.APARTAMENTO, proprietario);
+                                    Apartamento apartamento = new Apartamento(titulo, descricao, preco, TipoImovel.APARTAMENTO, consultor);
                                     imovel.salvar(apartamento);
                                 } else{
                                     System.out.println("Opção invalida, tente novamente\n");
-                                    opc = 0;
                                 }
                                 break;
                             case 2:
@@ -140,16 +127,22 @@ public class Main {
                                         System.out.println(imovel.buscarPorValorMenor(scanner.nextDouble()));
                                         break;
                                     case 4:
+                                        String nome, email, login, senha;
+
                                         System.out.println("Informe o Proprietario da casa: ");
                                         System.out.print("Nome ==> ");
-                                        proprietario.setNome(scannerCasa.nextLine());
+                                        nome = scannerCasa.nextLine();
+
                                         System.out.print("EMAIL ==> ");
-                                        proprietario.setEmail(scannerCasa.nextLine());
+                                        email = scannerCasa.nextLine();
+
                                         System.out.print("Login ==> ");
-                                        proprietario.setLogin(scannerCasa.nextLine());
+                                        login = scannerCasa.nextLine();
+
                                         System.out.print("Senha ==> ");
-                                        proprietario.setSenha(scannerCasa.nextLine());
-                                        System.out.println(imovel.buscarPorProprietario(proprietario));
+                                        senha = scannerCasa.nextLine();
+
+                                        System.out.println(imovel.buscarPorProprietario(new Cliente(nome,login,senha,email)));
                                         break;
                                     default:
                                         System.out.println("precione uma opção existente");
