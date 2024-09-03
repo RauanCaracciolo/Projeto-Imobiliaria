@@ -21,22 +21,42 @@ public class Consultor implements Usuario{
                   return nome;
          }
 
-         @Override
+    @Override
+    public void setNome(String nome) {
+
+    }
+
+    @Override
          public String getSenha() {
                   return senha;
          }
 
-         @Override
+    @Override
+    public void setSenha(String senha) {
+
+    }
+
+    @Override
          public String getLogin() {
                   return login;
          }
 
-         @Override
+    @Override
+    public void setLogin(String login) {
+
+    }
+
+    @Override
          public String getEmail() {
                   return email;
          }
-         
-         @Override
+
+    @Override
+    public void setEmail(String email) {
+
+    }
+
+    @Override
          public boolean getConsultor() {
                   return consultor;
          }

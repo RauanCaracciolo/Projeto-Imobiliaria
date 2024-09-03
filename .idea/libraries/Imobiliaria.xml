@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Imobiliaria">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/JavaApplication1/dist/Imobiliaria.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
