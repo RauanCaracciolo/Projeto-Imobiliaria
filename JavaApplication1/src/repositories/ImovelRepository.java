@@ -16,8 +16,13 @@ public class ImovelRepository implements Iterator {
 
     private List<Imovel> imoveis;
 
+    public ImovelRepository() {
+        imoveis = new ArrayList<>();
+    }
+
     // Adiciona o imovel, caso não esteja adicionado já
     public void salvar(Imovel imovel) {
+        System.out.println(imovel);
         if (!imoveis.contains(imovel)) {
             imoveis.add(imovel);
         } else {

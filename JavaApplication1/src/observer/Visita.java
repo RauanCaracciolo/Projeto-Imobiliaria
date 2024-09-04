@@ -1,4 +1,4 @@
-package Decorator;
+package observer;
 
 import models.Imovel;
 import models.Usuario;
@@ -19,15 +19,15 @@ public class Visita implements EventoListener {
         setImovel(imovel);
     }
 
-    public void agendarVisita(String data, Imovel imovel, Usuario user){
+    public void agendarVisita(String data, Imovel imovel, Usuario user) {
         /*
-        * if(imovel.isDisponivel){
-        *   if(data > 0 && data < 32){
-        *       sout => "Agendada"
-        *        agendados.add(imovel)
-        *   }
-        * }
-        * */
+         * if(imovel.isDisponivel){
+         * if(data > 0 && data < 32){
+         * sout => "Agendada"
+         * agendados.add(imovel)
+         * }
+         * }
+         */
     }
 
     public String getData() {

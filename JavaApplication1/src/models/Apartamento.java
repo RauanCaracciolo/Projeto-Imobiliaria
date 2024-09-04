@@ -5,24 +5,24 @@ import exceptions.InvalidInputException;
 
 import java.text.NumberFormat;
 
-public class Apartamento implements Imovel {
+public class Apartamento extends Imovel {
 
-         private String titulo;
-         private String descricao;
-         private double preco;
-         private TipoImovel tipoImovel;
-         private Usuario proprietario;
+    private String titulo;
+    private String descricao;
+    private double preco;
+    private TipoImovel tipoImovel;
+    private Usuario proprietario;
 
-         private boolean alugada;
+    private boolean alugada;
 
-         public Apartamento(String titulo, String descricao, double preco, TipoImovel tipoImovel, Usuario proprietario) {
-                  setTitulo(titulo);
-                  setDescricao(descricao);
-                  setPreco(preco);
-                  setTipoImovel(tipoImovel);
-                  setProprietario(proprietario);
-                  alugada = false;
-         }
+    public Apartamento(String titulo, String descricao, double preco, TipoImovel tipoImovel, Usuario proprietario) {
+        setTitulo(titulo);
+        setDescricao(descricao);
+        setPreco(preco);
+        setTipoImovel(tipoImovel);
+        setProprietario(proprietario);
+        alugada = false;
+    }
 
     @Override
     public String getTitulo() {
@@ -31,9 +31,9 @@ public class Apartamento implements Imovel {
 
     @Override
     public void setTitulo(String titulo) {
-        if(titulo != null){
+        if (titulo != null) {
             this.titulo = titulo;
-        }else{
+        } else {
             throw new InvalidInputException("Titulo nulo!");
         }
     }
@@ -45,9 +45,9 @@ public class Apartamento implements Imovel {
 
     @Override
     public void setDescricao(String descricao) {
-        if(descricao != null){
+        if (descricao != null) {
             this.descricao = descricao;
-        }else{
+        } else {
             throw new InvalidInputException("Descrição nula!");
         }
     }
@@ -59,9 +59,9 @@ public class Apartamento implements Imovel {
 
     @Override
     public void setPreco(double preco) {
-        if(preco > 0.0){
+        if (preco > 0.0) {
             this.preco = preco;
-        }else{
+        } else {
             throw new InvalidInputException("Preço negativo!");
         }
     }
@@ -73,9 +73,9 @@ public class Apartamento implements Imovel {
 
     @Override
     public void setTipoImovel(TipoImovel tipoImovel) {
-        if(tipoImovel != null){
+        if (tipoImovel != null) {
             this.tipoImovel = tipoImovel;
-        }else{
+        } else {
             throw new InvalidInputException("Tipo de imovel invalido!");
         }
     }
@@ -87,21 +87,25 @@ public class Apartamento implements Imovel {
 
     @Override
     public void setProprietario(Usuario usuario) {
-        if(usuario != null){
+        if (usuario != null) {
             this.proprietario = usuario;
-        }else{
+        } else {
             throw new InvalidInputException("Proprietario nulo!");
         }
     }
+
     @Override
-    public void aluga(){
+    public void aluga() {
         alugada = true;
     }
 
-         @Override
-         public String toString() {
-                  NumberFormat formater = NumberFormat.getNumberInstance();
-                  String valorFormatado = formater.format(preco);
-                  return "\n\n============================================================================\n" + getTitulo() + "\n----------------------------------------------------------------------------\n" + getDescricao() + "\n\nPreco: R$" + valorFormatado + "\nContato proprietario: " + proprietario.getEmail() + "\n============================================================================\n\n";
-         }
+    @Override
+    public String toString() {
+        NumberFormat formater = NumberFormat.getNumberInstance();
+        String valorFormatado = formater.format(preco);
+        return "\n\n============================================================================\n" + getTitulo()
+                + "\n----------------------------------------------------------------------------\n" + getDescricao()
+                + "\n\nPreco: R$" + valorFormatado + "\nContato proprietario: " + proprietario.getEmail()
+                + "\n============================================================================\n\n";
+    }
 }

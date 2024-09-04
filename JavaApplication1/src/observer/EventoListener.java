@@ -1,4 +1,4 @@
-package Decorator;
+package observer;
 
 public interface EventoListener {
 
