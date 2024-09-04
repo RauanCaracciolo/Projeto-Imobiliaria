@@ -11,16 +11,17 @@ public class Casa implements Imovel {
          private String descricao;
          private double preco;
          private TipoImovel tipoImovel;
+
          private Usuario proprietario;
 
+         private boolean alugada;
          public Casa(String titulo, String descricao, double preco, TipoImovel tipoImovel, Usuario proprietario) {
                   setTitulo(titulo);
                   setDescricao(descricao);
                   setPreco(preco);
                   setTipoImovel(tipoImovel);
-                  setProprietario(proprietario);
+                  alugada = false;
          }
-         
 
          @Override
          public String getTitulo() {
@@ -90,6 +91,10 @@ public class Casa implements Imovel {
              }else{
                  throw new InvalidInputException("Proprietario nulo!");
              }
+    }
+    @Override
+    public void aluga(){
+             alugada = true;
     }
 
     @Override

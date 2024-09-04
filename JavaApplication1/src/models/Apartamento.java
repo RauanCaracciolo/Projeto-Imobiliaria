@@ -13,12 +13,15 @@ public class Apartamento implements Imovel {
          private TipoImovel tipoImovel;
          private Usuario proprietario;
 
+         private boolean alugada;
+
          public Apartamento(String titulo, String descricao, double preco, TipoImovel tipoImovel, Usuario proprietario) {
                   setTitulo(titulo);
                   setDescricao(descricao);
                   setPreco(preco);
                   setTipoImovel(tipoImovel);
                   setProprietario(proprietario);
+                  alugada = false;
          }
 
     @Override
@@ -89,6 +92,10 @@ public class Apartamento implements Imovel {
         }else{
             throw new InvalidInputException("Proprietario nulo!");
         }
+    }
+    @Override
+    public void aluga(){
+        alugada = true;
     }
 
          @Override
