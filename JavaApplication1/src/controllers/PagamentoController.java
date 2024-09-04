@@ -9,6 +9,9 @@ import models.Cliente;
 //NECESSARIO ATUALIZACOES DEPOIS QUE AS CLASSES CLIENTE FOREM IMPLEMENTADAS
 //NECESSARIO ATUALIZACOES DEPOIS QUE AS CLASSES CLIENTE FOREM IMPLEMENTADAS
 
+//Criacao e Teste da classe PagamentoController
+//criado suas variaveis e metodos
+
 public class PagamentoController {
 
     private final PagamentoService pagamentoService;

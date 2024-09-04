@@ -5,6 +5,10 @@ import java.util.Map;
 import models.Cliente;
 import models.Pagamento;
 
+/*
+Nesta classe, foi criado um repositorio de Pagamentos, foi utilizado Map, uma vez que com a mesma, e possivel navegar por ela
+e localizar algum Objeto da Classe Pagamento, com maior facilidade
+ */
 
 public class PagamentoRepository {
          private Map<Long, Pagamento> pagamentos = new HashMap<>();

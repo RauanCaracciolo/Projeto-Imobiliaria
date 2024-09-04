@@ -1,6 +1,6 @@
 package enums;
 
-
+//Criacao do Enum TipoPagamento
 public enum TipoPagamento {
          CARTAO("Cartão"), DINHEIRO("Dinheiro"), PIX("Pix");
          

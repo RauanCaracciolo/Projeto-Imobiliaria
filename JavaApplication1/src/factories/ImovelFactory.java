@@ -5,6 +5,8 @@ import enums.TipoImovel;
 import models.Imovel;
 import models.Usuario;
 
+//Criacao do ImovelFactory, onde foi usado um Builder
+
 public class ImovelFactory {
          public static Imovel novoImovel(String titulo, String descricao, double preco, TipoImovel tipoImovel, Usuario proprietario) {
                   ImovelBuilder builder = new ImovelBuilder();

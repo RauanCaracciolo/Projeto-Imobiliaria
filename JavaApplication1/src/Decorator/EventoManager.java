@@ -1,7 +1,8 @@
-package observer;
+package Decorator;
 
 import java.util.ArrayList;
 
+//Criacao do EventoManager
 public class EventoManager {
     private ArrayList<EventoListener> notificacoes;
 
@@ -9,20 +10,20 @@ public class EventoManager {
         notificacoes = new ArrayList<>();
     }
 
-    public void inscrever(EventoListener e) {
-        if (!notificacoes.contains(e)) {
+    public void inscrever(EventoListener e){
+        if(!notificacoes.contains(e)){
             notificacoes.add(e);
         }
     }
 
-    public void remover(EventoListener e) {
-        if (notificacoes.contains(e)) {
+    public void remover(EventoListener e){
+        if(notificacoes.contains(e)){
             notificacoes.remove(e);
         }
     }
 
-    public void notificar(String mensagem) {
-        for (EventoListener e : notificacoes) {
+    public void notificar(String mensagem){
+        for(EventoListener e : notificacoes){
             e.update(mensagem);
         }
     }

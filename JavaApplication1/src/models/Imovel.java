@@ -2,6 +2,9 @@ package models;
 
 import enums.TipoImovel;
 
+//Criacao da Classe Apartamento onde
+//Criou-se suas varivaies, funcoes e metodos
+
 public abstract class Imovel {
     private String titulo;
     private String descricao;

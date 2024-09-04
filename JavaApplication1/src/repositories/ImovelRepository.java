@@ -8,7 +8,7 @@ import models.Imovel;
 import models.Usuario;
 
 /*
-Nesta classe, foi criado um repositorio de imoveis, foi utilizado List, uma vez que com a mesma, e possivel navegar por ela
+Nesta classe, foi criado um repositorio de Imoveis, foi utilizado List, uma vez que com a mesma, e possivel navegar por ela
 e localizar algum objeto da classe Imoveis, com maior facilidade
  */
 public class ImovelRepository implements Iterator {

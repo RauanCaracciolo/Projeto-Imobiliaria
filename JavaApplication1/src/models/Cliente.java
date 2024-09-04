@@ -3,6 +3,9 @@ package models;
 
 import exceptions.InvalidInputException;
 
+//Criacao da Classe Cliente (Extende de Usuario) onde
+//Criou-se suas varivaies, funcoes e metodos
+
 public class Cliente implements Usuario{
          private String nome;
          private String login;

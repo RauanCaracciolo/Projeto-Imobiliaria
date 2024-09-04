@@ -2,6 +2,9 @@ package models;
 
 import exceptions.InvalidInputException;
 
+//Criacao da Classe Consultor (Extende de Usuario) onde
+//Criou-se suas varivaies, funcoes e metodos
+
 public class Consultor implements Usuario {
     private String nome;
     private String login;

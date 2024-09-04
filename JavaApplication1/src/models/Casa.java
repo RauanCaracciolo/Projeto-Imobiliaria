@@ -5,6 +5,9 @@ import exceptions.InvalidInputException;
 
 import java.text.NumberFormat;
 
+//Criacao da Classe Casa (Extende de Imovel) onde
+//Criou-se suas varivaies, funcoes e metodos
+
 public class Casa extends Imovel {
 
     private String titulo;

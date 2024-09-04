@@ -9,9 +9,13 @@ import models.Cliente;
 import models.Consultor;
 import models.Usuario;
 
+/*
+Nesta classe, foi criado um repositorio de Usuarios, foi utilizado Map, uma vez que com a mesma, e possivel navegar por ela
+e localizar algum Objeto da Classe Usuario, com maior facilidade
+ */
+
 public class UsuarioRepository {
 
-        // Map<login, usuario>
         private Map<String, Usuario> usuarios = new HashMap<>();
 
         public void salvar(Usuario usuario) {

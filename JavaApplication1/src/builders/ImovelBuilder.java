@@ -6,6 +6,8 @@ import models.Casa;
 import models.Imovel;
 import models.Usuario;
 
+//Criacao da classe ImovelBuilder onde tambem
+//Criado suas funcoes, variaveis e comportamentos
 
 public class ImovelBuilder {
          private String titulo;
@@ -49,7 +51,7 @@ public class ImovelBuilder {
                   return this;
          }
          
-         
+         //Builder
          public Imovel build() {
                   return tipoImovel == TipoImovel.APARTAMENTO ? new Apartamento(titulo, descricao, preco, tipoImovel, proprietario) : new Casa(titulo, descricao, preco, tipoImovel, proprietario);
          }

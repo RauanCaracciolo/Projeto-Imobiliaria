@@ -4,6 +4,9 @@ import models.Cliente;
 import models.Consultor;
 import models.Usuario;
 
+//Criacao da classe UsuarioBuilder onde tambem
+//Criado suas funcoes, variaveis e comportamentos
+
 public class UsuarioBuilder {
          private String nome;
          private String login;

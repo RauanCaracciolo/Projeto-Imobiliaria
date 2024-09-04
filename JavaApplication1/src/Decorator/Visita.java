@@ -1,17 +1,14 @@
-package observer;
+package Decorator;
 
 import models.Imovel;
 import models.Usuario;
 
-import java.util.ArrayList;
-import java.util.List;
-
+//Criacao da classe Visita e tambem
+//suas variaveis, metodos e funcoes
 public class Visita implements EventoListener {
     private String data;
     private Usuario user;
     private Imovel imovel;
-
-    List<Imovel> agendados = new ArrayList<>();
 
     public Visita(String data, Usuario user, Imovel imovel) {
         setData(data);
@@ -19,23 +16,8 @@ public class Visita implements EventoListener {
         setImovel(imovel);
     }
 
-    public void agendarVisita(String data, Imovel imovel, Usuario user) {
-        /*
-         * if(imovel.isDisponivel){
-         * if(data > 0 && data < 32){
-         * sout => "Agendada"
-         * agendados.add(imovel)
-         * }
-         * }
-         */
-    }
-
     public String getData() {
         return data;
-    }
-
-    public Usuario getUser() {
-        return user;
     }
 
     public Imovel getImovel() {
@@ -56,7 +38,8 @@ public class Visita implements EventoListener {
 
     @Override
     public void update(String mensagem) {
-        System.out.println("Para: " + user.getNome() +
+        System.out.println(mensagem +
+                "\nPara: " + user.getNome() +
                 "\nIMOVEL: " + imovel.getTipoImovel() +
                 "\nNOME: " + imovel.getTitulo() +
                 "\nDESCRICAO:  " + imovel.getDescricao() +

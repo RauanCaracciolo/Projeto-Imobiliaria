@@ -3,6 +3,8 @@ package models;
 import enums.TipoPagamento;
 import exceptions.InvalidPagamentoException;
 
+//Criacao da Classe Pagamento onde
+//Criou-se suas varivaies, funcoes e metodos
 
 public class Pagamento {
          private static long contador = 1;

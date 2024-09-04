@@ -1,5 +1,7 @@
 package main;
 
+import Decorator.EventoManager;
+import Decorator.Visita;
 import enums.TipoImovel;
 import models.*;
 import proxy.EmailCache;
@@ -20,10 +22,13 @@ public class Main {
     public static void main(String[] args) {
         try {
             // Variaveis auxiliares
-            int i, choose = 0;
+            int opc, i, choose = 0;
 
             // Repositorio de Imoveis, facilitando na hora de achar o imovel desejado
             ImovelRepository imovel = new ImovelRepository();
+
+            //Decorator
+            EventoManager notificacao = new EventoManager();
 
             // Scanners para ajudar, um para usar na Main inteiro e o outro é destinado para
             // a criação de imoveis
@@ -37,7 +42,7 @@ public class Main {
             while (run) {
                 System.out.println("======================================");
                 System.out.println("======= IMOBILIARIA LAR IDEIAL =======");
-                System.out.println("======================================");
+                System.out.println("======================================\n");
 
                 System.out.println("1-Logar como adm\n2-Logar como cliente");
                 i = Integer.parseInt(scanner.nextLine());
@@ -49,6 +54,10 @@ public class Main {
 
                         // Pequeno painel do que o ADM pode fazer
                         while (choose != -1) {
+                            System.out.println("======================================");
+                            System.out.println("======= AREA DO ADM/CONSULTOR  =======");
+                            System.out.println("======================================\n");
+
                             System.out.println("1 - Cadastrar Imovel");
                             System.out.println("2 - Remover Imovel");
                             System.out.println("3 - Mostrar Imoveis");
@@ -61,7 +70,6 @@ public class Main {
 
                             switch (choose) {
                                 case 1:
-                                    int opc;
 
                                     String titulo;
                                     String descricao;
@@ -102,22 +110,21 @@ public class Main {
                                         System.out.println("Informe o Preço da Apartamento: ");
                                         preco = Double.parseDouble(scannerCasa.nextLine());
 
-                                        Apartamento apartamento = new Apartamento(titulo, descricao, preco,
-                                                TipoImovel.APARTAMENTO, consultor);
+                                        Apartamento apartamento = new Apartamento(titulo, descricao, preco, TipoImovel.APARTAMENTO, consultor);
                                         imovel.salvar(apartamento);
                                     } else {
                                         System.out.println("Opção invalida, tente novamente\n");
                                     }
                                     break;
                                 case 2:
+                                    System.out.println("=================================");
+                                    System.out.println("=======   REMOVER IMOVEL  =======");
                                     System.out.println("=================================\n");
-                                    System.out.println("=======   REMOVER IMOVEL  =======\n");
-                                    System.out.println("=================================\n\n");
                                     break;
                                 case 3:
+                                    System.out.println("=================================");
+                                    System.out.println("=======  MOSTRAR IMOVEIS  =======");
                                     System.out.println("=================================\n");
-                                    System.out.println("=======  MOSTRAR IMOVEIS  =======\n");
-                                    System.out.println("=================================\n\n");
                                     System.out.println("1 - Mostrar Todos os Imoveis");
                                     System.out.println("2 - Mostrar Imoveis Mais Caros");
                                     System.out.println("3 - Mostrar Imoveis Mais Baratos");
@@ -162,9 +169,9 @@ public class Main {
 
                                     break;
                                 case 4:
+                                    System.out.println("=================================");
+                                    System.out.println("======= VISITAS AGENDADAS =======");
                                     System.out.println("=================================\n");
-                                    System.out.println("======= VISITAS AGENDADAS =======\n");
-                                    System.out.println("=================================\n\n");
                                     break;
                                 case 5:
                                     String email_consultor, mensagem;
@@ -188,24 +195,171 @@ public class Main {
                                     break;
                                 case -1:
                                     System.out.println("SAINDO DO SISTEMA...\n");
-                                    System.out.println("");
                                     scannerCasa.close();// Fecha o fluxo do scanner para criar a casa;
                                     run = false;
                                     break;
                             }
-
                         }
-                    } else {
-                        // Caso não seja a senha correta, o sistema ira reconhecer que não é um ADM que
-                        // está entrando
-                        // logo, o mesmo ira entrar no modo de Cliente.
-                        System.out.println("Senha incorreta! Entrando no sistema normal");
                     }
-                } else if (i == 2) {
+                }else if (i == 2 || !scanner.nextLine().matches(senhaADM)){
+                    //Caso não seja a senha correta, o sistema ira reconhecer que não é um ADM que está entrando
+                    //logo, o mesmo ira entrar no modo de Cliente.
+                    System.out.println("Senha incorreta! Entrando no sistema normal");
 
+                    while (choose != -1){
+                        System.out.println("======================================");
+                        System.out.println("=======    AREA DO CLIENTE     =======");
+                        System.out.println("======================================\n");
+                        System.out.println("1 - Mostrar Imoveis");
+                        System.out.println("2 - Agendar Visitas");
+                        System.out.println("3 - Realizar pagamento");
+                        System.out.println("-1 - Sair do Sistema");
+
+                        System.out.println("Digite o que deseja fazer: ");
+                        choose = scanner.nextInt();
+
+                        if(choose == 1){
+                            System.out.println("=================================");
+                            System.out.println("=======  MOSTRAR IMOVEIS  =======");
+                            System.out.println("=================================\n");
+                            System.out.println("1 - Mostrar Todos os Imoveis");
+                            System.out.println("2 - Mostrar Imoveis Mais Caros");
+                            System.out.println("3 - Mostrar Imoveis Mais Baratos");
+                            System.out.println("4 - Buscar por Proprietario");
+
+                            opc = scanner.nextInt();
+
+                            switch (opc){
+                                case 1:
+                                    System.out.println(imovel.buscarTodos());
+                                    break;
+                                case 2:
+                                    System.out.println("Informe o preço que deseja procurar: ");
+                                    System.out.println(imovel.buscarPorValorMaior(scanner.nextDouble()));
+                                    break;
+                                case 3:
+                                    System.out.println("Informe o preço que deseja procurar: ");
+                                    System.out.println(imovel.buscarPorValorMenor(scanner.nextDouble()));
+                                    break;
+                                case 4:
+                                    String nome, email, login, senha;
+
+                                    System.out.println("Informe o Proprietario da casa: ");
+                                    System.out.print("Nome ==> ");
+                                    nome = scannerCasa.nextLine();
+
+                                    System.out.print("EMAIL ==> ");
+                                    email = scannerCasa.nextLine();
+
+                                    System.out.print("Login ==> ");
+                                    login = scannerCasa.nextLine();
+
+                                    System.out.print("Senha ==> ");
+                                    senha = scannerCasa.nextLine();
+
+                                    System.out.println(imovel.buscarPorProprietario(new Cliente(nome,login,senha,email)));
+                                    break;
+                                default:
+                                    System.out.println("precione uma opção existente");
+                            }
+                        } else if (choose == 2) {
+                            System.out.println("=================================");
+                            System.out.println("=======  AGENDAR VISITA   =======");
+                            System.out.println("=================================\n");
+
+                            System.out.println("1 - Casa\n2 - Apartamento");
+
+                            System.out.println("Informe qual é o imovel que deseja visitar?");
+
+                            if(scanner.nextInt() == 1){
+
+                                String data, nome, email, login, senha;
+                                int titulo;
+                                Visita v1;
+
+                                System.out.println("Informe o Proprietario da casa: ");
+                                System.out.print("Nome ==> ");
+                                nome = scannerCasa.nextLine();
+
+                                System.out.print("EMAIL ==> ");
+                                email = scannerCasa.nextLine();
+
+                                System.out.print("Login ==> ");
+                                login = scannerCasa.nextLine();
+
+                                System.out.print("Senha ==> ");
+                                senha = scannerCasa.nextLine();
+
+                                System.out.println("Informe qual é o titulo da Casa que deseja ver");
+                                titulo = scanner.nextInt();
+
+                                System.out.println("informe a Data ==> (EX: 04 de Setembro de 2024)");
+                                data = scanner.nextLine();
+
+                                v1 = new Visita(data, new Cliente(nome,login,senha,email), imovel.buscarTodos().get(titulo));
+
+                                notificacao.inscrever(v1);
+
+                                System.out.println("Deseja agendar a visita? \n1 - SIM\n 2 - NAO");
+
+                                if(scanner.nextInt() == 1){
+                                    notificacao.notificar("VISITA AGENDADA");
+                                } else if(scanner.nextInt() == 2){
+                                    notificacao.remover(v1);
+                                }
+                            } else if(scanner.nextInt() == 2){
+
+                                String data, nome, email, login, senha;
+                                int titulo;
+                                Visita v1;
+
+                                System.out.println("Informe o Proprietario do Aapartamento: ");
+                                System.out.print("Nome ==> ");
+                                nome = scannerCasa.nextLine();
+
+                                System.out.print("EMAIL ==> ");
+                                email = scannerCasa.nextLine();
+
+                                System.out.print("Login ==> ");
+                                login = scannerCasa.nextLine();
+
+                                System.out.print("Senha ==> ");
+                                senha = scannerCasa.nextLine();
+
+                                System.out.println("Informe qual é o titulo do Aparamento que deseja ver");
+                                titulo = scanner.nextInt();
+
+                                System.out.println("informe a Data ==> (EX: 04 de Setembro de 2024)");
+                                data = scanner.nextLine();
+
+                                v1 = new Visita(data, new Cliente(nome,login,senha,email), imovel.buscarTodos().get(titulo));
+
+                                notificacao.inscrever(v1);
+
+                                System.out.println("Deseja agendar a visita? \n1 - SIM\n 2 - NAO");
+
+                                if(scanner.nextInt() == 1){
+                                    notificacao.notificar("VISITA AGENDADA");
+                                } else if(scanner.nextInt() == 2){
+                                    notificacao.remover(v1);
+                                }
+                            } else{
+                                System.out.println("Informe qual é o Imovel que deseja Visitar");
+                            }
+                        } else if (choose == 3) {
+                            System.out.println("=================================");
+                            System.out.println("======  REALIZAR PAGAMENTO ======");
+                            System.out.println("=================================\n");
+
+                            System.out.println("1- Dinheiro\n2- Cartão\n 3- PIX");
+                        } else if (choose == -1){
+                            System.out.println("Saindo do sistema...");
+                        } else{
+                            System.out.println("Informe alguma das opcoes ");
+                        }
+                    }
                 }
             }
-
         } catch (Exception ex) {
             ex.printStackTrace();
         }
