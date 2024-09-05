@@ -59,10 +59,8 @@ public class Main {
                             System.out.println("======================================\n");
 
                             System.out.println("1 - Cadastrar Imovel");
-                            System.out.println("2 - Remover Imovel");
-                            System.out.println("3 - Mostrar Imoveis");
-                            System.out.println("4 - Mostrar Visitas");
-                            System.out.println("5 - Contatar Consultor");
+                            System.out.println("2 - Mostrar Imoveis");
+                            System.out.println("3 - Contatar Consultor");
                             System.out.println("-1 - Sair do Sistema");
 
                             System.out.println("Digite o que deseja fazer: ");
@@ -78,7 +76,7 @@ public class Main {
                                     Consultor consultor = new Consultor("Luiz", "login", "senha", "email");
 
                                     System.out.println("=================================");
-                                    System.out.println("======= CADASTANDO IMOVEL =======");
+                                    System.out.println("======= CADASTRANDO IMOVEL =======");
                                     System.out.println("=================================");
                                     System.out.println("O imovel é: ");
                                     System.out.println("1- Casa;\n2- Apartamento;");
@@ -117,11 +115,6 @@ public class Main {
                                     }
                                     break;
                                 case 2:
-                                    System.out.println("=================================");
-                                    System.out.println("=======   REMOVER IMOVEL  =======");
-                                    System.out.println("=================================\n");
-                                    break;
-                                case 3:
                                     System.out.println("=================================");
                                     System.out.println("=======  MOSTRAR IMOVEIS  =======");
                                     System.out.println("=================================\n");
@@ -168,12 +161,7 @@ public class Main {
                                     }
 
                                     break;
-                                case 4:
-                                    System.out.println("=================================");
-                                    System.out.println("======= VISITAS AGENDADAS =======");
-                                    System.out.println("=================================\n");
-                                    break;
-                                case 5:
+                                case 3:
                                     String email_consultor, mensagem;
 
                                     System.out.println("=================================");
@@ -212,7 +200,6 @@ public class Main {
                         System.out.println("======================================\n");
                         System.out.println("1 - Mostrar Imoveis");
                         System.out.println("2 - Agendar Visitas");
-                        System.out.println("3 - Realizar pagamento");
                         System.out.println("-1 - Sair do Sistema");
 
                         System.out.println("Digite o que deseja fazer: ");
@@ -346,12 +333,6 @@ public class Main {
                             } else{
                                 System.out.println("Informe qual é o Imovel que deseja Visitar");
                             }
-                        } else if (choose == 3) {
-                            System.out.println("=================================");
-                            System.out.println("======  REALIZAR PAGAMENTO ======");
-                            System.out.println("=================================\n");
-
-                            System.out.println("1- Dinheiro\n2- Cartão\n 3- PIX");
                         } else if (choose == -1){
                             System.out.println("Saindo do sistema...");
                         } else{
@@ -359,7 +340,7 @@ public class Main {
                         }
                     }
                 }
-            }
+                }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
